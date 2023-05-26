@@ -13,11 +13,11 @@
 	<script src="js/bootstrap.js"></script>	
 	
 	<script>
-	// 입력이 될 때마다
+	// 검색 버튼 누를 경우
 	function search() {
 		console.log("키워드 넘어오면 함수 호출되는가?");
 		var input = document.getElementById("searchInput").value;
-		axios.get('http://localhost:8005/search', {
+		axios.get('http://localhost:8005/searchList', {
 			params: {
 				user_name: input
 			}

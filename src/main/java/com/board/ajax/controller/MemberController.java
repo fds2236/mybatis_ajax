@@ -15,13 +15,14 @@ import com.board.ajax.mapper.MemberMapper;
 import com.board.ajax.service.MemberService;
 
 @Controller
+//@RequestMapping("/member")
 public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
 	
 	// 회원 리스트
-	@RequestMapping("/")
+	@RequestMapping("/list")
 	public String memberList(Model model) {
 		List<MemberDTO> memberList = memberService.getMemberList();
 		System.out.println(memberList);
@@ -30,7 +31,7 @@ public class MemberController {
 	}
 	
 	// 회원 검색 get
-	@GetMapping("/search")
+	@GetMapping("/searchList")
 	@ResponseBody
 	public List<MemberDTO> searchMember(@RequestParam("user_name") String member_name) {
 		System.out.println("요청 잘 들어오나요~~");
@@ -39,14 +40,20 @@ public class MemberController {
 		return member;
 	}
 	
+	@RequestMapping("/join")
+	public String join() {
+		return "join";
+	}
+	
+	
 	// 아이디 중복확인 get
-//	@GetMapping("/idCheck")
-//	@ResponseBody
-//	public String idCheck(@RequestParam("user_id")String user_id) {
-//		System.out.println("가입하려는 아이디 : " + user_id);
-//		return ;
-//	}
+	@GetMapping("/idCheck")
+	@ResponseBody
+	public boolean idCheck(@RequestParam("member_id")String user_id) {
+		System.out.println(user_id);
+		boolean idCheck = memberService.getIdCheck(user_id);
+		System.out.println(idCheck);
+		return idCheck;
+	}
 	
-	
-
 }

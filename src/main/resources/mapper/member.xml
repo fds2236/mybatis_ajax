@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="idCheck" resultType="String">
-		select member_id from member where member_id #{param}
+		select member_id from member where member_id = #{param}
 	</select>
 
 		 

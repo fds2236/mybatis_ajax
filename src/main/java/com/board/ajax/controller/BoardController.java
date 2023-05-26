@@ -5,14 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BoardController {
-	
-	@RequestMapping("/d")
+	@RequestMapping("/")
 	public String root() {
-		return "redirect:home";
+		return "home";
 	}
-	
-	@RequestMapping("/home")
-	public String home() {
-			return "index";
-	}
+
 }
