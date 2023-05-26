@@ -10,4 +10,5 @@ import com.board.ajax.dto.MemberDTO;
 public interface MemberMapper {
 	List<MemberDTO> memberList();
 	List<MemberDTO> memberSearchList(String member_name);
+	String idCheck(String member_id);
 }

@@ -21,7 +21,16 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<MemberDTO> getSearchMemberList(String member_name) {
+    public List<MemberDTO> getMemberByName(String member_name) {
         return memberMapper.memberSearchList(member_name);
+    }
+    
+    @Override
+    public boolean getIdCheck(String member_id) {
+    	if(memberMapper.idCheck(member_id).equals(null)) {
+    		return true;
+    	} else {
+    		return false;
+    	}	
     }
 }

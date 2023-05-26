@@ -10,6 +10,10 @@
 	 <select id="memberSearchList" resultType="com.board.ajax.dto.MemberDTO">
 		 select * from member where member_name like '%'||#{param}||'%'
 	</select>
+	
+	<select id="idCheck" resultType="String">
+		select member_id from member where member_id #{param}
+	</select>
 
 		 
 </mapper>

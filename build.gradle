@@ -31,6 +31,9 @@ dependencies {
 	
 	// jsp 사용
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	
+	// jstl태그 사용
+	implementation 'javax.servlet:jstl'
 }
 
 tasks.named('test') {

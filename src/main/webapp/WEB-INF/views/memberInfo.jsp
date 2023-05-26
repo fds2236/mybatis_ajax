@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-
-
-
-
-<input ></input>
 
 </body>
 </html>
