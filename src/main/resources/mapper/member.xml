@@ -14,6 +14,11 @@
 	<select id="idCheck" resultType="String">
 		select member_id from member where member_id = #{param}
 	</select>
+	
+	<insert id="memberListAdd">
+<!--		insert into member values(member_se.nextval, '테스트유저1', 'test1', 'asd123', '서울시 광진구 통일로', 23, 'M');-->
+		insert into member values(member_se.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6})
+	</insert>
 
 		 
 </mapper>

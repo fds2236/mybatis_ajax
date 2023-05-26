@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +30,13 @@ public class MemberController {
 		model.addAttribute("memberList", memberList);
 		return "memberList"; // 페이지 이동
 	}
+	
+	// 회원 리스트 추가
+//	@PostMapping("/listAdd")
+//	public 
+	
+	
+	
 	
 	// 회원 검색 get
 	@GetMapping("/searchList")

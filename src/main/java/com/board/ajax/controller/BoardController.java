@@ -9,5 +9,4 @@ public class BoardController {
 	public String root() {
 		return "home";
 	}
-
 }

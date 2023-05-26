@@ -9,5 +9,6 @@ public interface MemberService {
 	List<MemberDTO> getMemberList();
 	List<MemberDTO> getMemberByName(String member_name);
 	boolean getIdCheck(String member_id);
+//	MemberDTO
 
 }
