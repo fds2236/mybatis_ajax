@@ -1,5 +1,6 @@
 package com.board.ajax.controller;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,6 @@ public class MemberController {
 //	public 
 	
 	
-	
-	
 	// 회원 검색 get
 	@GetMapping("/searchList")
 	@ResponseBody
@@ -63,5 +62,13 @@ public class MemberController {
 		System.out.println(idCheck);
 		return idCheck;
 	}
+	
+	@PostMapping("/joinAction")
+	public String joinAction(MemberDTO memberDTO) {
+		System.out.println("member : " + memberDTO);
+		return "true";	
+	}
+	
+	
 	
 }

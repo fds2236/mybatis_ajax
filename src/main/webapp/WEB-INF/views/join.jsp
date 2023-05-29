@@ -29,9 +29,13 @@ function checkId() {
 </head>
 <body>
 
-
-<input placeholder='아이디 입력' id="idInput">
-<button type="button" onclick="checkId()">중복확인</button>
+<form action="/joinAction" method="post">
+<!-- <input placeholder='아이디 입력' id="idInput">
+<button type="button" onclick="checkId()">중복확인</button> -->
+<input placeholder='아이디 입력' name="member_id">
+<input type="password" placeholder='비밀번호 입력' name="member_pwd">
+<button type="submit">가입</button>
+</form>
 
 </body>
 </html>
