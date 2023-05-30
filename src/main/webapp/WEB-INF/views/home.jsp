@@ -12,9 +12,11 @@
 </head>
 
 <body>
-<h1>여기는 홈</h1>
+<h1>홈</h1>
 <a href="/list">회원목록</a>
 <a href="/join">회원가입</a>
+<a href="/login">로그인</a>
+
 
 
 </body>

@@ -12,8 +12,13 @@
 	</select>
 	
 	<select id="idCheck" resultType="String">
-		select member_id from member where member_id = #{param}
+		select member_id from member where member_id = #{param1} and member_pwd=#{param2}
 	</select>
+	
+	<select id="login" resultType="String">
+		select member_id from member where member_id=#{param1}
+	</select>
+	
 	
 	<insert id="memberListAdd">
 <!--		insert into member values(member_se.nextval, '테스트유저1', 'test1', 'asd123', '서울시 광진구 통일로', 23, 'M');-->

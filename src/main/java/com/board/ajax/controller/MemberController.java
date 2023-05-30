@@ -26,6 +26,22 @@ public class MemberController {
 	@Autowired
 	ReplyService replySerivce;
 	
+	@RequestMapping("/login")
+	public String login() {
+		return "loginForm";
+	}
+//	
+//	@GetMapping("/loginAction")
+//	public String loginAction(
+//			@RequestParam("member_id")String member_id,
+//			@RequestParam("member_pwd")String member_pwd,
+//			Model model) {
+//		System.out.println(member_id);
+//		System.out.println(member_pwd);
+//		boolean loginCheck = member
+//		return "";
+//	}
+	
 	// 회원 리스트
 	@RequestMapping("/list")
 	public String memberList(Model model) {
@@ -47,7 +63,7 @@ public class MemberController {
 	
 	@RequestMapping("/join")
 	public String join() {
-		return "join";
+		return "joinForm";
 	}
 	
 	// 아이디 중복확인 get
