@@ -14,47 +14,31 @@
 	
 	<script>
 	// 검색 버튼 누를 경우 => axios 사용
-	function search() {
-		console.log("키워드 넘어오면 함수 호출되는가?");
-		var input = document.getElementById("searchInput").value;
-		axios.get('http://localhost:8005/searchList', {
-			params: {
-				user_name: input
-			}
-		})
-		.then(function(response) {
-			// 응답 처리
-			console.log(response.data);
-			// 결과를 원하는 방식으로 테이블에 추가하거나 업데이트
-		      var memberList = response.data;
-		      var tbody = document.querySelector("tbody");
-		      tbody.innerHTML = ""; // 기존의 테이블 내용을 지우기
-		      
-		      for (var i = 0; i < memberList.length; i++) {
-		        var member = memberList[i];
-		        var tr = document.createElement("tr");
-		        
-		        var nameTd = document.createElement("td");
-		        nameTd.textContent = member.member_name;
-		        tr.appendChild(nameTd);
-		        
-		        var ageTd = document.createElement("td");
-		        ageTd.textContent = member.member_age;
-		        tr.appendChild(ageTd);
-		        
-		        var genderTd = document.createElement("td");
-		        genderTd.textContent = member.member_gender;
-		        tr.appendChild(genderTd);
-		        
-		        var addrTd = document.createElement("td");
-		        addrTd.textContent = member.member_addr;
-		        tr.appendChild(addrTd);    
-		        tbody.appendChild(tr);
-		      }		
-		})
-		.catch(function(error) {
-			console.error(error);
-		});
+	async function search() {
+	  try {
+	    const input = document.getElementById("searchInput").value;
+	    const response = await axios.get('http://localhost:8005/searchList', {
+	      params: {
+	        user_name: input
+	      }
+	    });
+	    
+	    const memberList = response.data;
+	    const tbody = document.querySelector("tbody");
+	    tbody.innerHTML = "";
+	    memberList.forEach(member => {
+	    const tr = document.createElement("tr");
+	      
+	      ['member_name', 'member_age', 'member_gender', 'member_addr'].forEach(prop => {
+	        const td = document.createElement("td");
+	        td.textContent = member[prop];
+	        tr.appendChild(td);
+	      }); 
+	      tbody.appendChild(tr);
+	    });
+	  } catch (error) {
+	    console.error(error);
+	  }
 	}
 	
     $(document).ready(function() {
@@ -75,9 +59,12 @@
                 for (var i = 0; i < replyList.length; i++) {
                     var reply = replyList[i];
                     var row = "<tr>" +
-                        "<td>" + reply.member_id + "</td>" +
-                        "<td>" + reply.reply_content + "</td>" +
-                        "</tr>";
+                    "<td>" + reply.member_id + "</td>" +
+                    "<td>" + reply.reply_content + "</td>" +
+                    "<td>" +
+                    "<button type='button' onclick='replyDelete(" + reply.reply_idx + ")'>삭제</button>" +
+                    "</td>" +
+                    "</tr>";
                     replyTableBody.append(row);
                 }
             }
@@ -97,14 +84,29 @@
     		success: function(response){
     			console.log("댓글삽입" + response);
     			replySelect();
+    			 $("#member_id").val('');
+    			 $("#reply_content").val('');
     		},
    		 	error: function(error) {
    	            console.error(error);
    	        }
     	});
     }
-	
-
+    
+    function replyDelete(reply_idx){
+    	console.log(reply_idx);
+    	$.ajax({
+    		url: "/replyDelete",
+    		type:"POST",
+    		data: {
+    			reply_num:reply_idx,
+    		},
+    		success: function(response) {
+    			alert("댓글이 삭제되었습니다");
+    			replySelect();
+    		}
+    	});
+    }
 	</script>
 	
 </head>
@@ -146,6 +148,7 @@
 			<tr>
 				<th style="background-color: #fafafa; text-align:center;">아이디</th>
 				<th style="background-color: #fafafa; text-align:center;">댓글</th>
+				<th style="background-color: #fafafa; text-align:center;">삭제</th>
 			</tr>
 		</thead>
 		<tbody id="replyTableBody">	

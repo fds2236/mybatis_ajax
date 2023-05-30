@@ -3,13 +3,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.board.ajax.mapper.ReplyMapper">
 	<select id="replyList" resultType="com.board.ajax.dto.ReplyDTO">
-		  select * from reply order by reply_idx desc
+		select * from reply order by reply_idx desc
 	</select>
 	
 	<insert id="replyAdd">
 		INSERT INTO REPLY VALUES(REPLY_SE.NEXTVAL, #{param1}, #{param2})
 	</insert>
-	  
+	
+	<delete id="replyDelete">
+		delete from reply where reply_idx = #{param1}
+	</delete>
+	 
+	 
 	  
 	  
 	  

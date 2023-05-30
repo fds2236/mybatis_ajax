@@ -7,4 +7,5 @@ import com.board.ajax.dto.ReplyDTO;
 public interface ReplyService {
 	List<ReplyDTO> getReplyList(); 	// 댓글 조회
 	String getReplyAdd(String member_id, String reply_content); // 댓글 삽입
+	String getReplyDelete(int member_idx);
 }

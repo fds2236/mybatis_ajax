@@ -16,13 +16,11 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Override
 	public List<ReplyDTO> getReplyList() {
-		System.out.println("여기서는 댓글조회 서비스 임플");
 		return replyMapper.replyList();
 	}
 
 	@Override
 	public String getReplyAdd(String member_id, String reply_content) {
-		System.out.println("여기는 댓글추가 임플");
 		if(replyMapper.replyAdd(member_id, reply_content) == 1) {
 			return "true";
 		} else if(replyMapper.replyAdd(member_id, reply_content) == 0) {
@@ -31,6 +29,16 @@ public class ReplyServiceImpl implements ReplyService{
 			return "false";
 		}		
 	}
+
+	@Override
+	public String getReplyDelete(int member_idx) {
+		if(replyMapper.replyDelete(member_idx) == 1) {
+		return "true";
+		} else {
+			return "false";
+		}
+	}
+	
 	
 	
 

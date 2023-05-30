@@ -10,4 +10,5 @@ import com.board.ajax.dto.ReplyDTO;
 public interface ReplyMapper {
 	List<ReplyDTO> replyList();
 	int replyAdd(String member_id, String reply_content);
+	int replyDelete(int reply_idx);
 }

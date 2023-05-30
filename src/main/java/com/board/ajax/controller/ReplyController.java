@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.board.ajax.dto.ReplyDTO;
@@ -17,7 +19,7 @@ public class ReplyController {
 	@Autowired
 	ReplyService replyService;
 	
-	@RequestMapping("/replyList")
+	@GetMapping("/replyList")
 	@ResponseBody
 	public List<ReplyDTO> replyList() {
 		List<ReplyDTO> replyList = replyService.getReplyList();
@@ -25,7 +27,7 @@ public class ReplyController {
 		return replyList;
 	}
 	
-	@RequestMapping("/replyAdd")
+	@PostMapping("/replyAdd")
 	@ResponseBody
 	public String replyAdd(ReplyDTO replyDTO){
 		System.out.println("댓글 입력 데이터" + replyDTO);
@@ -33,6 +35,15 @@ public class ReplyController {
 		System.out.println(replyResult);
 		return replyResult;
 	}
+	
+	@PostMapping("/replyDelete")
+	@ResponseBody
+	public String replyDelte(@RequestParam("reply_num")int reply_idx) {
+		String replyResult = replyService.getReplyDelete(reply_idx);	
+		return replyResult;
+	}
+	
+	
 		
 
 	
