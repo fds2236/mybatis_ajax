@@ -1,6 +1,5 @@
 package com.board.ajax.controller;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.board.ajax.dto.MemberDTO;
 import com.board.ajax.mapper.MemberMapper;
 import com.board.ajax.service.MemberService;
+import com.board.ajax.service.ReplyService;
 
 @Controller
 //@RequestMapping("/member")
@@ -22,6 +22,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	ReplyService replySerivce;
 	
 	// 회원 리스트
 	@RequestMapping("/list")
@@ -31,12 +34,7 @@ public class MemberController {
 		model.addAttribute("memberList", memberList);
 		return "memberList"; // 페이지 이동
 	}
-	
-	// 회원 리스트 추가
-//	@PostMapping("/listAdd")
-//	public 
-	
-	
+		
 	// 회원 검색 get
 	@GetMapping("/searchList")
 	@ResponseBody
@@ -51,7 +49,6 @@ public class MemberController {
 	public String join() {
 		return "join";
 	}
-	
 	
 	// 아이디 중복확인 get
 	@GetMapping("/idCheck")
